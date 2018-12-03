@@ -1,0 +1,23 @@
+{
+  "name": "@join-com/process-env",
+  "version": "1.0.0",
+  "description": "required environment variables",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/join-com/process-env.git"
+  },
+  "keywords": [
+    "env",
+    "required"
+  ],
+  "author": "JOIN team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/join-com/proccess-env/issues"
+  },
+  "homepage": "https://github.com/join-com/proccess-env#readme"
+}
