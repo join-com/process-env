@@ -1,6 +1,6 @@
 {
   "name": "@join-com/process-env",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "required environment variables",
   "main": "lib/index.js",
   "scripts": {
@@ -9,12 +9,12 @@
     "prepublish": "tsc"
   },
   "lint-staged": {
-    "*.{js,ts,md}": [
+    "*.{ts,md}": [
       "yarn prettier --write",
       "git add"
     ],
     "src/**/*.ts": [
-      "yarn lint --fix",
+      "npm run lint --fix",
       "git add"
     ]
   },
