@@ -22,6 +22,17 @@ const asInt = (str: string | undefined, varName: string): number => {
   return num;
 };
 
+const asNumber = (str: string | undefined, varName: string): number => {
+  if (!str) {
+    return 0;
+  }
+  const num = parseFloat(str);
+  if (Number.isNaN(num)) {
+    throw new Error(`env.${varName} is expected to be number`);
+  }
+  return num;
+};
+
 const asBool = (str: string | undefined, varName: string): boolean => {
   if (!str) {
     return false;
@@ -42,6 +53,7 @@ export const env = (varName: string, optional = false) => {
   return {
     asString: () => variable || '',
     asInt: () => asInt(variable, varName),
+    asNumber: () => asNumber(variable, varName),
     asBool: () => asBool(variable, varName),
   };
 };
