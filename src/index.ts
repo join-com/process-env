@@ -45,6 +45,26 @@ const asBool = (str: string | undefined, varName: string): boolean => {
   return str === 'true';
 };
 
+/**
+ * Parses a string of key=value pairs separated by commas into an object
+ */
+const asKeyValuePairs = (
+  str: string | undefined,
+  varName: string,
+): { [key: string]: string } => {
+  if (!str) {
+    return {};
+  }
+  return str.split(',').reduce<{ [key: string]: string }>((acc, pair) => {
+    const [key, value] = pair.split('=');
+    if (!key || !value) {
+      throw new Error(`Invalid key=value pair in env.${varName}: ${pair}`);
+    }
+    acc[key] = value;
+    return acc;
+  }, {});
+};
+
 export const env = (varName: string, optional = false) => {
   const variable = process.env[varName];
   if (!variable && !optional) {
@@ -55,5 +75,6 @@ export const env = (varName: string, optional = false) => {
     asInt: () => asInt(variable, varName),
     asNumber: () => asNumber(variable, varName),
     asBool: () => asBool(variable, varName),
+    asKeyValuePairs: () => asKeyValuePairs(variable, varName),
   };
 };
